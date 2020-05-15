@@ -1,5 +1,22 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require("fs");
+
+var allSettings = [
+    "prefix"
+];
+var allDefaults = [
+    "??"
+];
+
+function setSettingsArray(id, newSet, value){
+    var path = "DataBase\\" + id + "\\settings.txt"
+    var json = fs.readFileSync(path);
+    var oldSets = JSON.parse(json);
+    oldSets[newSet.toString()] = value;
+    var j = JSON.stringify(oldSets);
+    fs.writeFileSync(path, j);
+};
 
 function genArray(id){
     var folder = "DataBase\\" + id.toString();
@@ -42,60 +59,25 @@ function checkGuildFiles(){
     var len = allGuilds.length;
     for(let i = 0; i < len; i++) {
         let guildID = allGuilds[i].id;
-        //console.log(guildID);
         genArray(guildID);
     }
 }
-
 
 client.on('ready', () => {
     checkGuildFiles();
 });
 
- 
 
 client.on('message', message => {
     var settings = getSettingsArray(message.guild.id);
-	   if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
     const args = message.content.slice(settings.prefix.length).split(/ +/);
-	   const command = args.shift().toLowerCase();
+    const command = args.shift().toLowerCase();
 
     if(message.member.roles.cache.find(r => r.name === "Faction")){
-        if (command === 'help') {
-            var settingsEmbed = new Discord.MessageEmbed().setTitle('Commands help');
-            var configs = "**prefix (string)**: sets the bot prefix\n**ftopChannel (string)**: set the channel name for f top notifications";
-            settingsEmbed.setDescription('Type ' + settings.prefix + 'commandname with new value')
-            settingsEmbed.addField('Config commands:', configs, true);
-            settingsEmbed.setColor('#000000');
-            settingsEmbed.setTimestamp();
-            settingsEmbed.setFooter('Kami Bots');
-            message.channel.send(settingsEmbed);
-        }else if(command === 'prefix'){
-            newPrefix = args[0]
-            if (newPrefix){
-                setSettingsArray(message.guild.id, "prefix", newPrefix);
-                message.channel.send("set new prefix to " + newPrefix);
-            }else{
-                message.channel.send("please specify a prefix");
-            }
-        }else if(command === 'ftop'){
-            if (calculatingFTop == true){
-                message.channel.send("This command is on cooldown, please wait (called by: " + message.member.user.tag + ")");
-            }else{
-                messageAuthor = message.member.user.tag;
-                bot.chat('/f top');
-                message.channel.send("Calculating f top values, please wait (aprox 10 sec to prevent spam)").then((sentMessage) => {
-                    ftopChatMessage = sentMessage
-                })
-                calculatingFTop = true;
-                setTimeout(function() {
-                    calculatingFTop = false;
-                }, 25000);
-            }
-            message.delete();
-        }else if(command === 'ftopchannel'){
-            var a = args[0]
-        }
+        if (command === 'dm') {
+        	
+	}
     }else{
         message.channel.send('you are not allowed to run this');
     }
