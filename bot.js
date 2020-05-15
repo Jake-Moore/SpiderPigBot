@@ -11,7 +11,7 @@ client.on('message', message => {
     const args = message.content.slice(2).split(/ +/);
     const command = args.shift().toLowerCase();
     if (command == "dm"){
-        console.log(args[0]);
+        //console.log(args[0]);
         var send = "";
         for (let z = 1; z < args.length; z++){
             send = send + args[z] + " ";
