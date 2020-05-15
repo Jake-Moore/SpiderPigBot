@@ -15,21 +15,11 @@ client.on('message', message => {
         if (args[0] == "everyone"){
             message.channel.send("will send to all"); 
         }else{
-            var a = args[0];
-            var b,c;
-            if (a.search("<@")){
-                b = a.replace("<@","");
-            }else{
-                b = a   
-            }
-            if (b.search(">")){
-                c = b.replace(">","");   
-            }
-            else{   
-                c = b;
-            }
-            console.log(c);
-            var dmTo = client.users.cache.get("name", args[0]); 
+            var giventxt = args[0].toString();
+            var regex = "([0-9]+)"
+            var groups = a.match(regex);
+            var id = groups[0];
+            var dmTo = client.users.cache.get(id); 
             if (dmTo){
                 message.channel.send("user found, sending test message");
                 dmTo.send("test1");
