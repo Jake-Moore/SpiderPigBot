@@ -64,7 +64,9 @@ function checkGuildFiles(){
 }
 
 client.on('ready', () => {
-    checkGuildFiles();
+    setTimeout(function(name) {
+        checkGuildFiles();
+    }, 3000);
 });
 
 client.on('message', message => {
