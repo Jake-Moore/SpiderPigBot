@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (!message.content.startsWith("??") || message.author.bot) return;
-    const args = message.content.slice(settings.prefix.length).split(/ +/);
+    const args = message.content.slice(2).split(/ +/);
     const command = args.shift().toLowerCase();
     if (command == "dm"){
         if (args[0] == "everyone"){
