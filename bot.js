@@ -16,13 +16,19 @@ client.on('message', message => {
             message.channel.send("will send to all"); 
         }else{
             var a = args[0];
+            var b,c;
             if (a.search("<@")){
-                a.replace("<@","");
+                b = a.replace("<@","");
+            }else{
+                b = a   
             }
-            if (a.search(">")){
-                a.replace(">","");   
+            if (b.search(">")){
+                c = b.replace(">","");   
             }
-            console.log(a)
+            else{   
+                c = b;
+            }
+            console.log(c);
             var dmTo = client.users.cache.get("name", args[0]); 
             if (dmTo){
                 message.channel.send("user found, sending test message");
