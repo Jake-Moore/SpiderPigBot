@@ -35,12 +35,20 @@ client.on('message', message => {
             var groups = giventxt.match(regex);
             if (groups){
                 var id = groups[0];
-                var dmTo = client.users.cache.get(id); 
+                var dmTo = client.users.cache.get(id);
+                var role = message.guild.roles.get(id)
+                .members.map(m=>m.user.tag);
                 if (dmTo){
                     message.channel.send("user found, sending message");
                     dmTo.send(send);
                 }else{
-                    message.channel.send("user not found");
+                    if (role){
+                        role.members.map(m=>{
+                            console.log(m.user.id);
+                        });
+                    }else{
+                        message.channel.send("could not find user or role");
+                    }
                 }
             }else{
                 message.channel.send("user not found");
