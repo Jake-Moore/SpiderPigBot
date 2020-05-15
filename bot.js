@@ -36,17 +36,16 @@ client.on('message', message => {
             if (groups){
                 var id = groups[0];
                 var dmTo = client.users.cache.get(id);
-                var role = message.guild.roles.cache.get(id)
-                .members.map(m=>m.user.tag);
+                var role = message.guild.roles.cache.get(id);
                 if (dmTo){
                     message.channel.send("user found, sending message");
                     dmTo.send(send);
                 }else{
                     if (role){
                         console.log(role);
-                        //role.members.map(m=>{
-                        //    console.log(m.user.id);
-                        //});
+                        role.members.map(m=>{
+                            console.log(m.user);
+                        });
                     }else{
                         message.channel.send("could not find user or role");
                     }
