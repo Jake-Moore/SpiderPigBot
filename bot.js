@@ -12,7 +12,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
     if (command == "dm"){
         console.log(args[0])
-        if (args[0] == "<@everyone>"){
+        if (args[0] == "@everyone" || args[0] == "everyone"){
             message.channel.send("will send to all"); 
         }else{
             var giventxt = args[0].toString();
