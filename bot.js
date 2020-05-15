@@ -36,7 +36,7 @@ client.on('message', message => {
             if (groups){
                 var id = groups[0];
                 var dmTo = client.users.cache.get(id);
-                var role = message.guild.roles.get(id)
+                var role = message.guild.roles.cache.get(id)
                 .members.map(m=>m.user.tag);
                 if (dmTo){
                     message.channel.send("user found, sending message");
