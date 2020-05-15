@@ -20,9 +20,11 @@ client.on('message', message => {
             const list = client.guilds.cache.get(guildID); 
             list.members.cache.forEach(member => {
                 var id = member.user.id;
-                var dmTo = client.users.cache.get(id);
-                if (dmTo){
-                    dmTo.send(send);
+                if (id != 710652108541657090){
+                    var dmTo = client.users.cache.get(id);
+                    if (dmTo){
+                        dmTo.send(send);
+                    }   
                 }
             }); 
         }else{
