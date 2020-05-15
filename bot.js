@@ -14,7 +14,7 @@ client.on('message', message => {
         if (args[0] == "everyone"){
             message.channel.send("will send to all"); 
         }else{
-            var dmTo = client.users.get("name", args[0]); 
+            var dmTo = client.users.cache.get("name", args[0]); 
             dmTo.send("test");
         }
     }
