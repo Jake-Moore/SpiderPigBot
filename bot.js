@@ -11,6 +11,7 @@ client.on('message', message => {
     const args = message.content.slice(2).split(/ +/);
     const command = args.shift().toLowerCase();
     if (command == "dm"){
+        console.log(args[0])
         if (args[0] == "everyone"){
             message.channel.send("will send to all"); 
         }else{
