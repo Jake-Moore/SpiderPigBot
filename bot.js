@@ -24,7 +24,7 @@ client.on('message', message => {
                 if (dmTo){
                     message.channel.send("user found, sending test message");
                     var send = "";
-                    for (let i = 0, i<args.length, i++){
+                    for (let z = 0, z < args.length, z++){
                         send = send + args[i];
                     }
                     dmTo.send(send);
