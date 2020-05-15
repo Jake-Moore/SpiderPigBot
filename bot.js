@@ -11,13 +11,15 @@ client.on('message', message => {
     const args = message.content.slice(2).split(/ +/);
     const command = args.shift().toLowerCase();
     if (command == "dm"){
-        console.log(args[0])
         if (args[0] == "@everyone" || args[0] == "everyone"){
             var send = "";
             for (let z = 1; z < args.length; z++){
                 send = send + args[z] + " ";
             }
-            console.log(message.guild.members.cache);
+            var arr = message.guild.members.cache;
+            for (i = 0; i < arr.length; i++){
+                console.log(arr[i]);   
+            }
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
