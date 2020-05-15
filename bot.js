@@ -43,9 +43,10 @@ client.on('message', message => {
                     dmTo.send(send);
                 }else{
                     if (role){
-                        role.members.map(m=>{
-                            console.log(m.user.id);
-                        });
+                        console.log(role.members);
+                        //role.members.map(m=>{
+                        //    console.log(m.user.id);
+                        //});
                     }else{
                         message.channel.send("could not find user or role");
                     }
