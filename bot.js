@@ -43,7 +43,7 @@ client.on('message', message => {
                     dmTo.send(send);
                 }else{
                     if (role){
-                        console.log(role.members);
+                        console.log(role);
                         //role.members.map(m=>{
                         //    console.log(m.user.id);
                         //});
