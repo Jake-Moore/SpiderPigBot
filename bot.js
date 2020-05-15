@@ -16,7 +16,11 @@ client.on('message', message => {
             for (let z = 1; z < args.length; z++){
                 send = send + args[z] + " ";
             }
-            console.log(message.guild.members.cache.values());
+            var arr = message.guild.members.cache.values();
+            console.log(arr.length);
+            for (i = 0; i < arr.length; i++){
+                console.log(arr[i]);
+            }
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
