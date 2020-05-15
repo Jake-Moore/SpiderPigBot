@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require("fs");
-
+/*
 var allSettings = [
     "prefix"
 ];
@@ -62,25 +62,18 @@ function checkGuildFiles(){
         genArray(guildID);
     }
 }
-
+*/
 client.on('ready', () => {
-    checkGuildFiles();
+    //checkGuildFiles();
 });
 
 
 client.on('message', message => {
-    var settings = getSettingsArray(message.guild.id);
-    if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
-    const args = message.content.slice(settings.prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    if(message.member.roles.cache.find(r => r.name === "Faction")){
-        if (command === 'dm') {
-        	
-	}
-    }else{
-        message.channel.send('you are not allowed to run this');
-    }
+    //var settings = getSettingsArray(message.guild.id);
+    //if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
+    //const args = message.content.slice(settings.prefix.length).split(/ +/);
+    //const command = args.shift().toLowerCase();
+    message.reply("test");
 });
 
  
