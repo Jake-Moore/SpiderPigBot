@@ -42,9 +42,10 @@ client.on('message', message => {
                     dmTo.send(send);
                 }else{
                     if (role){
-                        console.log(role);
                         role.members.map(m=>{
-                            console.log(m.user);
+                            var userID = m.user.id;
+                            var dmTo = client.users.cache.get(userID);
+                            dmTo.send(send);
                         });
                     }else{
                         message.channel.send("could not find user or role");
