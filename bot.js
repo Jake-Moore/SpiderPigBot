@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require("fs");
-/*
+
 var allSettings = [
     "prefix"
 ];
@@ -64,9 +64,8 @@ function checkGuildFiles(){
 }
 */
 client.on('ready', () => {
-    //checkGuildFiles();
+    checkGuildFiles();
 });
-
 
 client.on('message', message => {
     //var settings = getSettingsArray(message.guild.id);
