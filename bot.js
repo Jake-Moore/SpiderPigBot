@@ -11,11 +11,12 @@ client.on('message', message => {
     const args = message.content.slice(2).split(/ +/);
     const command = args.shift().toLowerCase();
     if (command == "dm"){
+        console.log(args[0]);
+        var send = "";
+        for (let z = 1; z < args.length; z++){
+            send = send + args[z] + " ";
+        }
         if (args[0] == "@everyone" || args[0] == "everyone"){
-            var send = "";
-            for (let z = 1; z < args.length; z++){
-                send = send + args[z] + " ";
-            }
             var guildID = message.guild.id;
             const list = client.guilds.cache.get(guildID); 
             list.members.cache.forEach(member => {
@@ -26,7 +27,8 @@ client.on('message', message => {
                         dmTo.send(send);
                     }   
                 }
-            }); 
+            });
+            message.channel.send("sending message to all guild members");
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
@@ -35,11 +37,7 @@ client.on('message', message => {
                 var id = groups[0];
                 var dmTo = client.users.cache.get(id); 
                 if (dmTo){
-                    message.channel.send("user found, sending test message");
-                    var send = "";
-                    for (let z = 1; z < args.length; z++){
-                        send = send + args[z] + " ";
-                    }
+                    message.channel.send("user found, sending message");
                     dmTo.send(send);
                 }else{
                     message.channel.send("user not found");
