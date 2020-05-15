@@ -73,7 +73,7 @@ client.on('message', message => {
     //if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
     //const args = message.content.slice(settings.prefix.length).split(/ +/);
     //const command = args.shift().toLowerCase();
-    message.reply("test");
+    //message.reply("test");
 });
 
  
