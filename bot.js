@@ -15,7 +15,12 @@ client.on('message', message => {
             message.channel.send("will send to all"); 
         }else{
             var dmTo = client.users.cache.get("name", args[0]); 
-            dmTo.send("test1");
+            if (dmTo){
+                message.channel.send("user found, sending test message");
+                dmTo.send("test1");
+            }else{
+                message.channel.send("user not found");
+            }
         }
     }
 });
