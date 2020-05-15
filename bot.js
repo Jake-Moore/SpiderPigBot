@@ -16,10 +16,9 @@ client.on('message', message => {
             for (let z = 1; z < args.length; z++){
                 send = send + args[z] + " ";
             }
-            var arr = message.guild.members.cache.values();
             var guildID = message.guild.id;
-            const list = client.guilds.get(guildID); 
-            list.members.forEach(member => {
+            const list = client.guilds.cache.get(guildID); 
+            list.members.cache.forEach(member => {
                 var id = member.user.id;
                 var dmTo = client.users.cache.get(id);
                 if (dmTo){
