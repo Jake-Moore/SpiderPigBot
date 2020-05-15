@@ -17,7 +17,7 @@ client.on('message', message => {
                 send = send + args[z] + " ";
             }
             message.guild.members.fetch().then(fetchedMembers => {
-                console.log(fetchedMembers.Collection);
+                console.log(fetchedMembers.keys());
             });
         }else{
             var giventxt = args[0].toString();
