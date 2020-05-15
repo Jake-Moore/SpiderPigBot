@@ -62,7 +62,7 @@ function checkGuildFiles(){
         genArray(guildID);
     }
 }
-*/
+
 client.on('ready', () => {
     checkGuildFiles();
 });
