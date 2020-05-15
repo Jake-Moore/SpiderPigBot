@@ -55,7 +55,7 @@ function genArray(id){
 }
 
 function checkGuildFiles(){
-    var allGuilds = discordbot.guilds.cache.array();
+    var allGuilds = client.guilds.cache.array();
     var len = allGuilds.length;
     for(let i = 0; i < len; i++) {
         let guildID = allGuilds[i].id;
