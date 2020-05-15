@@ -16,7 +16,9 @@ client.on('message', message => {
             for (let z = 1; z < args.length; z++){
                 send = send + args[z] + " ";
             }
-            console.log(message.guild.members.cache);
+            message.guild.members.fetch().then(fetchedMembers => {
+                console.log(fetchedMembers);
+            });
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
