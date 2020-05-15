@@ -17,7 +17,7 @@ client.on('message', message => {
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
-            var groups = a.match(regex);
+            var groups = giventxt.match(regex);
             var id = groups[0];
             var dmTo = client.users.cache.get(id); 
             if (dmTo){
