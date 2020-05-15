@@ -18,11 +18,19 @@ client.on('message', message => {
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
             var groups = giventxt.match(regex);
-            var id = groups[0];
-            var dmTo = client.users.cache.get(id); 
-            if (dmTo){
-                message.channel.send("user found, sending test message");
-                dmTo.send("test1");
+            if (groups){
+                var id = groups[0];
+                var dmTo = client.users.cache.get(id); 
+                if (dmTo){
+                    message.channel.send("user found, sending test message");
+                    var send = "";
+                    for (let i = 0, i<args.length, i++){
+                        send = send + args[i];
+                    }
+                    dmTo.send(send);
+                }else{
+                    message.channel.send("user not found");
+                }
             }else{
                 message.channel.send("user not found");
             }
