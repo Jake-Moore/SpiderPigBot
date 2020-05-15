@@ -13,7 +13,11 @@ client.on('message', message => {
     if (command == "dm"){
         console.log(args[0])
         if (args[0] == "@everyone" || args[0] == "everyone"){
-            message.channel.send("will send to all"); 
+            var send = "";
+            for (let z = 1; z < args.length; z++){
+                send = send + args[z] + " ";
+            }
+            console.log(message.guild);
         }else{
             var giventxt = args[0].toString();
             var regex = "([0-9]+)"
@@ -24,7 +28,7 @@ client.on('message', message => {
                 if (dmTo){
                     message.channel.send("user found, sending test message");
                     var send = "";
-                    for (let z = 0; z < args.length; z++){
+                    for (let z = 1; z < args.length; z++){
                         send = send + args[z] + " ";
                     }
                     dmTo.send(send);
